@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4708725599071328638}
   - component: {fileID: 5073642207398043445}
   - component: {fileID: 1848852816080068610}
-  - component: {fileID: 7000272346538918340}
   m_Layer: 5
   m_Name: Block
   m_TagString: Untagged
@@ -38,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3802495326729356138
 MonoBehaviour:
@@ -52,6 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63af72cced24a64a0802434e5bc6551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteVariant:
+  - {fileID: -9105749763464574675, guid: 6f161791107102c449e3de991c907b2b, type: 3}
+  - {fileID: -8600411641421432971, guid: f1fc892fabada954780c1c54f5bdf41c, type: 3}
+  - {fileID: 7424901662290350790, guid: c40fe0b637283614f85b3bdf4b6c6941, type: 3}
+  - {fileID: -190364731537695696, guid: a20629c0f0315864c9f1a95391a0ff50, type: 3}
+  - {fileID: 1766323589166174454, guid: b46b420194e92b7409b4a656be747f5c, type: 3}
   <Button>k__BackingField: {fileID: 1848852816080068610}
   <BlockData>k__BackingField:
     rid: 4013599442551964371
@@ -86,14 +91,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -9105749763464574675, guid: 6f161791107102c449e3de991c907b2b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -102,7 +107,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.2
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &1848852816080068610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,23 +152,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7000272346538918340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519473269174675566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: 1
-  m_FlexibleHeight: 1
-  m_LayoutPriority: 1

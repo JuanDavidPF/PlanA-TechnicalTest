@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7778603510651395893}
   - component: {fileID: 500556938432225491}
   - component: {fileID: 6439389991998039672}
+  - component: {fileID: 7016367126113756174}
+  - component: {fileID: 9050355615055045319}
+  - component: {fileID: 9041856702117226924}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -55,24 +58,24 @@ MonoBehaviour:
   _gridLayoutGroup: {fileID: 852189784400044401}
   _canvasGroup: {fileID: 6439389991998039672}
   _slotPool:
-    rid: 4013599442551964224
+    rid: 1000
   _blockPool:
-    rid: 4013599442551964314
+    rid: 1001
   references:
     version: 2
     RefIds:
-    - rid: 4013599442551964224
+    - rid: 1000
       type: {class: 'ObjectPool`1[[PlanA.PuzzleGame.Blocks.SlotController, PlanA.PuzzleGame]]', ns: PlanA.Architecture.Architecture.ObjectPool, asm: PlanA.Architecture}
       data:
         <EnqueuedContainer>k__BackingField: {fileID: 0}
         <Prefab>k__BackingField: {fileID: 381761517813625920, guid: 22fcf8243b28481409e147ea53c23524, type: 3}
-        <PoolSize>k__BackingField: 50
-    - rid: 4013599442551964314
+        <PoolSize>k__BackingField: 40
+    - rid: 1001
       type: {class: 'ObjectPool`1[[PlanA.PuzzleGame.Blocks.BlockController, PlanA.PuzzleGame]]', ns: PlanA.Architecture.Architecture.ObjectPool, asm: PlanA.Architecture}
       data:
         <EnqueuedContainer>k__BackingField: {fileID: 0}
         <Prefab>k__BackingField: {fileID: 3802495326729356138, guid: 889104f8decb1024f814dd18ddab5183, type: 3}
-        <PoolSize>k__BackingField: 50
+        <PoolSize>k__BackingField: 40
 --- !u!114 &852189784400044401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,15 +89,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 80
-    m_Right: 80
-    m_Top: 80
-    m_Bottom: 0
+    m_Left: 18
+    m_Right: 18
+    m_Top: 18
+    m_Bottom: 18
   m_ChildAlignment: 4
-  m_StartCorner: 0
+  m_StartCorner: 3
   m_StartAxis: 0
-  m_CellSize: {x: 320, y: 320}
-  m_Spacing: {x: 16, y: 16}
+  m_CellSize: {x: 128, y: 112}
+  m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 5
 --- !u!223 &7778603510651395893
@@ -149,3 +152,55 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!222 &7016367126113756174
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597662066488652093}
+  m_CullTransparentMesh: 1
+--- !u!114 &9050355615055045319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597662066488652093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -6185343655787597505, guid: 9fedf007ca128394692be09aac29bb53, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9041856702117226924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597662066488652093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
