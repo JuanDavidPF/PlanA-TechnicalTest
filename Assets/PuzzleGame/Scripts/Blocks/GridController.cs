@@ -21,6 +21,7 @@ namespace PlanA.PuzzleGame.Blocks
             Vector2Int.left,
             Vector2Int.right
         };
+
         [SerializeField] private GridLayoutGroup _gridLayoutGroup;
         [SerializeField] private CanvasGroup _canvasGroup;
 
@@ -32,10 +33,12 @@ namespace PlanA.PuzzleGame.Blocks
         [SerializeReference] private AudioClip _blockPop;
 
         private int _blockTypes;
-
         private RectTransform _rectTransform;
         private Dictionary<Vector2Int, SlotController> _slots = new();
 
+        /// <summary>
+        /// Initializes required references and object pools.
+        /// </summary>
         protected override void Awake()
         {
             base.Awake();
@@ -44,11 +47,17 @@ namespace PlanA.PuzzleGame.Blocks
             _blockPool.Initialize();
         }
 
+        /// <summary>
+        /// Subscribes to game start events.
+        /// </summary>
         private void Start()
         {
             ServiceLocator.Get<EventBusService>().Subscribe<OnGameStarted>(BuildBoard);
         }
 
+        /// <summary>
+        /// Cleans up event subscriptions and pooled objects on destruction.
+        /// </summary>
         private void OnDestroy()
         {
             if (ServiceLocator.TryGet(out EventBusService eventBusService))
@@ -60,6 +69,9 @@ namespace PlanA.PuzzleGame.Blocks
             _blockPool.Clear();
         }
 
+        /// <summary>
+        /// Builds and initializes the game board when the game starts.
+        /// </summary>
         private void BuildBoard(OnGameStarted onGameStarted)
         {
             _canvasGroup.interactable = false;
@@ -86,9 +98,11 @@ namespace PlanA.PuzzleGame.Blocks
                     slotController.transform.localScale = Vector3.one;
                     _slots[position] = slotController;
 
-                    //This delay, creates a wave effect when creating the tiles
                     float waveDelay = (column + row) * 0.05f;
-                    UniTask blockSpawn = UniTask.WaitForSeconds(waveDelay).ContinueWith(() => SpawnBlock(position));
+                    UniTask blockSpawn = UniTask
+                        .WaitForSeconds(waveDelay)
+                        .ContinueWith(() => SpawnBlock(position));
+
                     spawnOperations.Add(blockSpawn);
                 }
             }
@@ -103,6 +117,9 @@ namespace PlanA.PuzzleGame.Blocks
             }).Forget();
         }
 
+        /// <summary>
+        /// Spawns a block at the given grid position if the slot is empty.
+        /// </summary>
         private BlockController SpawnBlock(Vector2Int position)
         {
             SlotController slot = _slots[position];
@@ -116,10 +133,14 @@ namespace PlanA.PuzzleGame.Blocks
                 BlockType = Random.Range(0, _blockTypes),
                 Position = position
             });
+
             block.SpawnFromTopAnimation().Forget();
             return block;
         }
 
+        /// <summary>
+        /// Handles user interaction when a block is tapped.
+        /// </summary>
         private void OnBlockTapped(OnBlockTapped onBlockTapped)
         {
             GameData gameData = GameManager.Instance.RuntimeGameData;
@@ -132,17 +153,24 @@ namespace PlanA.PuzzleGame.Blocks
             SlotController slot = _slots[position];
             slot.RemoveBlock();
 
-            //Despawn tapped tile
             ServiceLocator.Get<AudioDispatcher>().Play(_blockPop);
-            onBlockTapped.Block.DespawnAnimation(0.35f).ContinueWith(() => _blockPool.Enqueue(onBlockTapped.Block)).Forget();
+            onBlockTapped.Block
+                .DespawnAnimation(0.35f)
+                .ContinueWith(() => _blockPool.Enqueue(onBlockTapped.Block))
+                .Forget();
 
-            //Recursively yap matching neighbour tiles, with a slight delay.
-            UniTask.WaitForSeconds(0.15f).ContinueWith(() => TapMatchingNeighbours(onBlockTapped.Block)).Forget();
+            UniTask.WaitForSeconds(0.15f)
+                .ContinueWith(() => TapMatchingNeighbours(onBlockTapped.Block))
+                .Forget();
 
-            //Collapse the column
-            UniTask.WaitForSeconds(0.5f).ContinueWith(() => CollapseColumn(position.x)).Forget();
+            UniTask.WaitForSeconds(0.5f)
+                .ContinueWith(() => CollapseColumn(position.x))
+                .Forget();
         }
 
+        /// <summary>
+        /// Recursively taps adjacent blocks of the same type.
+        /// </summary>
         private void TapMatchingNeighbours(BlockController block)
         {
             Vector2Int blockPosition = block.BlockData.Value.Position;
@@ -150,7 +178,11 @@ namespace PlanA.PuzzleGame.Blocks
             foreach (Vector2Int direction in MatchDirections)
             {
                 Vector2Int neighbourPosition = blockPosition + direction;
-                if (!_slots.TryGetValue(neighbourPosition, out SlotController slot) || slot.Block == null || !slot.Block.Button.interactable) continue;
+
+                if (!_slots.TryGetValue(neighbourPosition, out SlotController slot) ||
+                    slot.Block == null ||
+                    !slot.Block.Button.interactable)
+                    continue;
 
                 if (block.AreSameType(slot.Block))
                 {
@@ -159,10 +191,12 @@ namespace PlanA.PuzzleGame.Blocks
             }
         }
 
+        /// <summary>
+        /// Collapses a column downward and spawns new blocks at the top.
+        /// </summary>
         private void CollapseColumn(int column)
         {
             GameData gameData = GameManager.Instance.RuntimeGameData;
-
             int writeRow = 0;
 
             for (int readRow = 0; readRow < gameData.Rows; readRow++)
@@ -200,6 +234,9 @@ namespace PlanA.PuzzleGame.Blocks
             }
         }
 
+        /// <summary>
+        /// Disables interaction and unsubscribes from events when the game ends.
+        /// </summary>
         private void OnGameOver(OnGameOver onGameOver)
         {
             _canvasGroup.interactable = false;
@@ -208,6 +245,9 @@ namespace PlanA.PuzzleGame.Blocks
             eventBusService.Unsubscribe<OnGameOver>(OnGameOver);
         }
 
+        /// <summary>
+        /// Clears the board and returns all slots and blocks to their pools.
+        /// </summary>
         private void CleanBoard()
         {
             foreach (SlotController slot in _slots.Values)
@@ -225,6 +265,9 @@ namespace PlanA.PuzzleGame.Blocks
             _slots.Clear();
         }
 
+        /// <summary>
+        /// Calculates the block size based on grid width and column count.
+        /// </summary>
         private float CalculateBlockSize(int columns)
         {
             float blockSize = _rectTransform.rect.width;
