@@ -1,0 +1,10 @@
+{
+  "name": "com.plan_a.core",
+  "displayName": "Plan A Core",
+  "version": "1.0.0",
+  "unity": "6000.0",
+  "description": "This package contains reusable scripts used throughout the technical test.",
+  "author": {
+    "name": "Juan David Pay\u00e1n"
+  }
+}

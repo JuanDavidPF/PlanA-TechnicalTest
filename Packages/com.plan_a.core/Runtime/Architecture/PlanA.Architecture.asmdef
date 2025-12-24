@@ -1,0 +1,17 @@
+{
+  "name": "PlanA.Architecture",
+  "rootNamespace": "PlanA.Architecture",
+  "references": [
+    "GUID:496cb625f5978e44aaf96bcf1630aa3e",
+    "GUID:e607f83e60511a84f9fb029eaf80f4ce"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

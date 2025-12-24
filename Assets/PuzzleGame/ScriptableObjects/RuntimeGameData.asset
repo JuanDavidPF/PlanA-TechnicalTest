@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67857523f2d4de7905e14c500240c53, type: 3}
+  m_Name: RuntimeGameData
+  m_EditorClassIdentifier: 
+  Moves:
+    rid: 4013599442551964110
+  Score:
+    rid: 4013599442551964111
+  references:
+    version: 2
+    RefIds:
+    - rid: 4013599442551964110
+      type: {class: IntDataBind, ns: PlanA.Architecture.DataBinding, asm: PlanA.Architecture}
+      data:
+        <Value>k__BackingField: 5
+    - rid: 4013599442551964111
+      type: {class: IntDataBind, ns: PlanA.Architecture.DataBinding, asm: PlanA.Architecture}
+      data:
+        <Value>k__BackingField: 0
