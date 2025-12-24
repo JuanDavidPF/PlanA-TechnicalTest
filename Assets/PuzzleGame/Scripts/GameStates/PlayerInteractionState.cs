@@ -10,14 +10,6 @@ namespace PlanA.PuzzleGame.GameStates
             GameManager.Instance.RuntimeGameData.Moves.Bind(OnMovesChanged, true);
         }
 
-        static private void OnMovesChanged(IntDataBind moves)
-        {
-            if (moves.Value <= 0)
-            {
-                GameManager.Instance.StateMachine.ChangeState(new GameOverState());
-            }
-        }
-
         public void OnTick()
         {
         }
@@ -25,6 +17,14 @@ namespace PlanA.PuzzleGame.GameStates
         public void OnExit()
         {
             GameManager.Instance?.RuntimeGameData.Moves.UnBind(OnMovesChanged);
+        }
+
+        static private void OnMovesChanged(IntDataBind moves)
+        {
+            if (moves.Value <= 0)
+            {
+                GameManager.Instance.StateMachine.ChangeState(new GameOverState());
+            }
         }
     }
 }

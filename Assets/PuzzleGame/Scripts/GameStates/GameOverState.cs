@@ -1,7 +1,6 @@
 ﻿using PlanA.Architecture.EventBus;
 using PlanA.Architecture.Services;
 using PlanA.PuzzleGame.GameEvents;
-using UnityEngine;
 
 namespace PlanA.PuzzleGame.GameStates
 {
@@ -14,11 +13,6 @@ namespace PlanA.PuzzleGame.GameStates
             eventBusService.Subscribe<OnReplayRequested>(ReplayGame);
         }
 
-        static private void ReplayGame(OnReplayRequested onReplayRequested)
-        {
-            GameManager.Instance.StateMachine.ChangeState(new GameStartedState());
-        }
-
         public void OnTick()
         {
         }
@@ -29,6 +23,11 @@ namespace PlanA.PuzzleGame.GameStates
             {
                 eventBusService.Unsubscribe<OnReplayRequested>(ReplayGame);
             }
+        }
+
+        static private void ReplayGame(OnReplayRequested onReplayRequested)
+        {
+            GameManager.Instance.StateMachine.ChangeState(new GameStartedState());
         }
     }
 }

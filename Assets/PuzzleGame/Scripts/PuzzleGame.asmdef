@@ -1,24 +1,24 @@
 {
-    "name": "PlanA.PuzzleGame",
-    "rootNamespace": "PlanA.PuzzleGame",
-    "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
-        "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
-        "GUID:51751c33aebed4b4bb57c7a24bfd3876",
-        "GUID:61d7e4e7420046c4aa30154ebc9742b5",
-        "GUID:496cb625f5978e44aaf96bcf1630aa3e",
-        "GUID:e607f83e60511a84f9fb029eaf80f4ce",
-        "GUID:f79ca9e5ddf973142836b4863bc80156"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": false,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "PlanA.PuzzleGame",
+  "rootNamespace": "PlanA.PuzzleGame",
+  "references": [
+    "GUID:6055be8ebefd69e48b49212b09b47b2f",
+    "GUID:f51ebe6a0ceec4240a699833d6309b23",
+    "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+    "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
+    "GUID:51751c33aebed4b4bb57c7a24bfd3876",
+    "GUID:61d7e4e7420046c4aa30154ebc9742b5",
+    "GUID:496cb625f5978e44aaf96bcf1630aa3e",
+    "GUID:e607f83e60511a84f9fb029eaf80f4ce",
+    "GUID:f79ca9e5ddf973142836b4863bc80156"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

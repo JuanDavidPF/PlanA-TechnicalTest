@@ -9,6 +9,14 @@ namespace PlanA.PuzzleGame.Blocks
     {
         public BlockController Block { get; private set; }
 
+        public void OnEnqueue()
+        {
+        }
+
+        public void OnDequeue()
+        {
+        }
+
         public void SetBlock(BlockController newBlock)
         {
             newBlock.transform.SetParent(transform, true);
@@ -22,14 +30,6 @@ namespace PlanA.PuzzleGame.Blocks
             BlockController blockToRemove = Block;
             Block = null;
             return blockToRemove;
-        }
-
-        public void OnEnqueue()
-        {
-        }
-
-        public void OnDequeue()
-        {
         }
     }
 }
