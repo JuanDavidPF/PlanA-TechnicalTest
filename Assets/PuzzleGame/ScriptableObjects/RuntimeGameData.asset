@@ -16,6 +16,10 @@ MonoBehaviour:
     rid: 4013599442551964110
   Score:
     rid: 4013599442551964111
+  Columns: 5
+  Rows: 6
+  BlockTypes: 2
+  TapPoints: 50
   references:
     version: 2
     RefIds:

@@ -11,6 +11,7 @@ namespace PlanA.PuzzleGame
         public int Columns = 5;
         public int Rows = 6;
         public int BlockTypes = 5;
+        public int TapPoints = 50;
 
         public void Assign(GameData gameData)
         {
