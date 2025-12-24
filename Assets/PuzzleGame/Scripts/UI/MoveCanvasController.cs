@@ -1,4 +1,3 @@
-using System.Globalization;
 using PlanA.Architecture.DataBinding;
 using TMPro;
 using UnityEngine;
@@ -14,17 +13,17 @@ namespace PlanA.PuzzleGame.UI
             GameManager.Instance.RuntimeGameData.Moves.Bind(OnScoreUpdated);
         }
 
-        private void OnScoreUpdated(IntDataBind movesBind)
-        {
-            _movesText.text = movesBind.Value.ToString("N0", CultureInfo.CurrentCulture);
-        }
-
         private void OnDestroy()
         {
             if (GameManager.Instance)
             {
                 GameManager.Instance.RuntimeGameData.Moves.UnBind(OnScoreUpdated);
             }
+        }
+
+        private void OnScoreUpdated(IntDataBind movesBind)
+        {
+            _movesText.text = movesBind.Value.ToString();
         }
     }
 }

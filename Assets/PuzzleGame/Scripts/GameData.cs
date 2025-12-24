@@ -26,6 +26,7 @@ namespace PlanA.PuzzleGame
             Columns = gameData.Columns;
             Rows = gameData.Rows;
             BlockTypes = gameData.BlockTypes;
+            TapPoints = gameData.TapPoints;
         }
     }
 }

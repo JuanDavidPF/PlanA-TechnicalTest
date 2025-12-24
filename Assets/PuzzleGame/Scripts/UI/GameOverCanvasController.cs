@@ -18,6 +18,17 @@ namespace PlanA.PuzzleGame.UI
             ServiceLocator.Get<EventBusService>().Subscribe<OnGameOver>(OnGameOver);
         }
 
+        private void OnDestroy()
+        {
+            _replayButton.onClick.RemoveListener(OnReplayButtonClicked);
+
+            if (ServiceLocator.TryGet(out EventBusService eventBusService))
+            {
+                eventBusService.Unsubscribe<OnGameStarted>(OnGameStarted);
+                eventBusService.Unsubscribe<OnGameOver>(OnGameOver);
+            }
+        }
+
         private void OnGameStarted(OnGameStarted onGameStarted)
         {
             _canvas.enabled = false;
@@ -31,17 +42,6 @@ namespace PlanA.PuzzleGame.UI
         static private void OnReplayButtonClicked()
         {
             ServiceLocator.Get<EventBusService>().Raise(new OnReplayRequested());
-        }
-
-        private void OnDestroy()
-        {
-            _replayButton.onClick.RemoveListener(OnReplayButtonClicked);
-
-            if (ServiceLocator.TryGet(out EventBusService eventBusService))
-            {
-                eventBusService.Unsubscribe<OnGameStarted>(OnGameStarted);
-                eventBusService.Unsubscribe<OnGameOver>(OnGameOver);
-            }
         }
     }
 }

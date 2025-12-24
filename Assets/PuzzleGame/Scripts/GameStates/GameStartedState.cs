@@ -2,7 +2,6 @@
 using PlanA.Architecture.EventBus;
 using PlanA.Architecture.Services;
 using PlanA.PuzzleGame.GameEvents;
-using UnityEngine;
 
 namespace PlanA.PuzzleGame.GameStates
 {
@@ -12,6 +11,18 @@ namespace PlanA.PuzzleGame.GameStates
         {
             ServiceLocator.Get<EventBusService>().Subscribe<OnBoardCreated>(OnBoardCreated);
             LoadGame().Forget();
+        }
+
+        public void OnTick()
+        {
+        }
+
+        public void OnExit()
+        {
+            if (ServiceLocator.TryGet(out EventBusService eventBusService))
+            {
+                eventBusService.Unsubscribe<OnBoardCreated>(OnBoardCreated);
+            }
         }
 
         /// <summary>
@@ -30,18 +41,6 @@ namespace PlanA.PuzzleGame.GameStates
         static private void OnBoardCreated(OnBoardCreated onBoardCreated)
         {
             GameManager.Instance.StateMachine.ChangeState(new PlayerInteractionState());
-        }
-
-        public void OnTick()
-        {
-        }
-
-        public void OnExit()
-        {
-            if (ServiceLocator.TryGet(out EventBusService eventBusService))
-            {
-                eventBusService.Unsubscribe<OnBoardCreated>(OnBoardCreated);
-            }
         }
     }
 }

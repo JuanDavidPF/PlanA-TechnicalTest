@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace PlanA.Architecture.Architecture.ObjectPool
 {
@@ -42,7 +43,7 @@ namespace PlanA.Architecture.Architecture.ObjectPool
 
         private T CreateInstance()
         {
-            T instance = UnityEngine.Object.Instantiate(Prefab, EnqueuedContainer);
+            T instance = Object.Instantiate(Prefab, EnqueuedContainer);
             instance.gameObject.SetActive(false);
             return instance;
         }
@@ -77,7 +78,7 @@ namespace PlanA.Architecture.Architecture.ObjectPool
 
                 if (instance != null)
                 {
-                    UnityEngine.Object.Destroy(instance.gameObject);
+                    Object.Destroy(instance.gameObject);
                 }
             }
 

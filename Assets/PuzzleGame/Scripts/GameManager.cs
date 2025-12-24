@@ -9,9 +9,13 @@ namespace PlanA.PuzzleGame
 {
     public class GameManager : Singleton<GameManager>
     {
+        [field: Header("Data")]
         [field: SerializeField] public GameData EditorGameData { get; private set; }
 
         [field: SerializeField] public GameData RuntimeGameData { get; private set; }
+
+        [Header("Componentes")]
+        [SerializeField] private AudioSource _audioSource;
 
         public StateMachine StateMachine { get; private set; }
 
@@ -19,6 +23,8 @@ namespace PlanA.PuzzleGame
         {
             base.Awake();
             ServiceLocator.Register(typeof(EventBusService), new EventBusService());
+            ServiceLocator.Register(typeof(AudioDispatcher), new AudioDispatcher(_audioSource));
+
             StateMachine = new StateMachine(new GameStartedState());
         }
 
