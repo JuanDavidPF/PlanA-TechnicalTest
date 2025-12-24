@@ -5,6 +5,8 @@ This repository contains the solution for the **Plan A – Senior Unity Game Dev
 The goal of this project is to implement a simple puzzle game while demonstrating
 clean architecture, maintainable code, and good Unity practices under time constraints.
 
+https://github.com/user-attachments/assets/104f4a57-8b1a-437c-ae96-fb4ebbaf8c7f
+
 ---
 
 ## Project Overview
