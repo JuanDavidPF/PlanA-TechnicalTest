@@ -19,6 +19,7 @@ MonoBehaviour:
   Columns: 5
   Rows: 6
   BlockTypes: 5
+  TapPoints: 50
   references:
     version: 2
     RefIds:
